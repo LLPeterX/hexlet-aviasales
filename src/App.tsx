@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Controls from './components/Controls';
+import Header from './components/Header';
+import TransferSelector from './components/TransferSelector';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-sm">
+      <Header />
+      <Controls />
+      <div className="row">
+        <div className="col-4">
+          <TransferSelector />
+        </div>
+        <div className="col-8">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ratione sunt dicta aliquam minus expedita quos, aliquid tempora debitis. Minus voluptatem vel aspernatur perferendis fugiat eligendi doloribus inventore et consectetur!
+        </div>
+      </div>
     </div>
   );
 }
