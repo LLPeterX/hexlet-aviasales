@@ -1,108 +1,74 @@
 import React, { useState } from 'react'
-import ITransferFilter from '../types/transferFilter';
 import './transferSelector.css'
+import ITransferFilter from '../types/transferFilter'
 
-// объект по умолчанию для доступных чекбоксов.
-// ключи потом преобразуются в id формы
-const initialState: ITransferFilter = {
-  "all": true,
-  "0": false,
-  "1": false,
-  "2": false,
-  "3": false
+interface IHandler {
+  (count: string): void
 }
 
-// определить - есть ли отмеченные пункты ниже заданного
-const hasCheckedBelow = (filterObj: ITransferFilter, from: string) => {
-  return Object.entries(filterObj).some(([key, v]) => key !== 'all' && key >= from && v);
-}
+interface IProps {
+  transfers: ITransferFilter | null,
+  onSelectTransfers: IHandler
+};
 
-export default function TransferSelector() {
-  const [transfers, setTransfers] = useState(initialState);
-
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    let { checked } = e.target;
-    let newFilter = { ...transfers };
-    console.log('set filter:', e.target.value);
-
-    switch (e.target.value) {
-      case 'all':
-        // если включить, то сбросить все остальные
-        if (checked) {
-          newFilter["all"] = true;
-          newFilter["0"] = false;
-          newFilter["1"] = false;
-          newFilter["2"] = false;
-          newFilter["3"] = false;
-        } else {
-          // если отключить - то сбросить остальные кроме "без пересадок"
-          newFilter["all"] = false;
-          newFilter["0"] = true;
-          newFilter["1"] = false;
-          newFilter["2"] = false;
-          newFilter["3"] = false;
-
-        }
-        break; // не обрабатываем вообще - сн
-      default:
-        if (checked) {
-          // если включен, то убрать "все" и низлежащие
-          newFilter['all'] = false;
-          //newFilter['0'] = true;
-        } else {
-          // если отключен, то если нет других маршрутов > 0, то установить all=true
-          if (!hasCheckedBelow(newFilter, "0")) {
-            newFilter['all'] = true;
-          }
-        }
-    }
-    //console.log(e.target.checked, e.target.value, e.target.id);
-    console.log('new state:', newFilter);
-
-    setTransfers(newFilter);
-
-  }
-
+export default function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element {
+  console.log('draw  TransferSelector with', transfers);
   return (
-    <div>
-
+    <div className="form-transfer">
+      <div className="form-header">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
       <div className="form-check">
         <input
+          id="chk_all"
           className="form-check-input"
           type="checkbox"
-          id="chk_all"
-          onChange={handleChange}
+          onChange={() => onSelectTransfers('all')}
           defaultChecked={true}
-          value="all"
+          name="all"
         />
         <label className="form-check-label" htmlFor="chk_all">Все</label>
       </div>
+
       <div className="form-check">
-        <input className="form-check-input" type="checkbox"
+        <input
           id="chk_0"
-          onChange={handleChange}
+          className="form-check-input"
+          type="checkbox"
+          onChange={() => onSelectTransfers('0')}
           defaultChecked={false}
-          value="0"
+          name="0"
         />
         <label className="form-check-label" htmlFor="chk_0">Без пересадок</label>
       </div>
 
-
-      {/* 
       <div className="form-check">
-        <input className="form-check-input" type="checkbox" id="chk_1" onChange={() => handleChange(1)} />
+        <input className="form-check-input"
+          type="checkbox"
+          id="chk_1"
+          name="1"
+          onChange={() => onSelectTransfers('1')}
+        />
         <label className="form-check-label" htmlFor="chk_1">1 пересадка</label>
       </div>
+
       <div className="form-check">
-        <input className="form-check-input" type="checkbox" id="chk_2" onChange={() => handleChange(2)} />
+        <input className="form-check-input"
+          type="checkbox"
+          id="chk_2"
+          name="2"
+          onChange={() => onSelectTransfers('2')}
+        />
         <label className="form-check-label" htmlFor="chk_2">2 пересадки</label>
       </div>
+
       <div className="form-check">
-        <input className="form-check-input" type="checkbox" id="chk_3" onChange={() => handleChange(3)} />
+        <input className="form-check-input"
+          type="checkbox"
+          id="chk_3"
+          name="3"
+          onChange={() => onSelectTransfers('3')}
+        />
         <label className="form-check-label" htmlFor="chk_3">3 пересадки</label>
       </div>
-       */}
     </div>
 
   )

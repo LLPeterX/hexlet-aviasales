@@ -1,18 +1,33 @@
 import React from 'react'
 import './controls.css'
 
-export default function Controls() {
+interface IHandler {
+  (param: string): void
+}
+
+interface IControlProps {
+  active: string,
+  setActive: IHandler
+}
+
+export default function Controls({ active, setActive }: IControlProps) {
   return (
-    <div className="row">
-      <div className="btn-group" role="group" aria-label="Basic example">
-        <div className="col">
-          <button type="button" className="btn outline">КОЛИЧЕСТВО ПЕРЕСАДОК</button>
-        </div>
-        <div className="col">
-          <button type="button" className="btn btn-primary">САМЫЙ ДЕШЕВЫЙ</button>
-        </div>
-        <div className="col">
-          <button type="button" className="btn">САМЫЙ БЫСТРЫЙ</button>
+    <div className="container buttons">
+      <div className="row">
+        <div className="col btn-group" role="group" aria-label="select price or speed">
+
+          <button type="button"
+            className={`btn ${active === 'price' ? 'btn-primary' : 'outline'}`}
+            onClick={() => setActive('price')}
+          >САМЫЙ ДЕШЕВЫЙ
+          </button>
+
+          <button type="button"
+            className={`btn ${active === 'speed' ? 'btn-primary' : 'outline'}`}
+            onClick={() => setActive('speed')}
+          >САМЫЙ БЫСТРЫЙ
+          </button>
+
         </div>
       </div>
     </div>

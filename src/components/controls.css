@@ -1,6 +1,13 @@
-.btn {
-  border: 1px solid green;
-  width: 100%;
-  padding: 10px;
+.buttons {
+  /* border: 1px solid red; */
   margin-bottom: 20px;
+}
+
+.btn {
+  /* border: 1px solid green; */
+  width: 100%;
+}
+
+.transf {
+  border: 1px solid;
 }

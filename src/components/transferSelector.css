@@ -1,3 +1,11 @@
 .chk-outline {
   background-color: aqua;
 }
+
+.form-header {
+  margin: 8px;
+}
+
+.form-transfer {
+  background-color: white;
+}
