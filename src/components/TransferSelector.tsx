@@ -7,12 +7,11 @@ interface IHandler {
 }
 
 interface IProps {
-  transfers: ITransferFilter | null,
+  transfers: ITransferFilter,
   onSelectTransfers: IHandler
 };
 
-export default function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element {
-  console.log('draw  TransferSelector with', transfers);
+function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element {
   return (
     <div className="form-transfer">
       <div className="form-header">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
@@ -22,8 +21,8 @@ export default function TransferSelector({ transfers, onSelectTransfers }: IProp
           className="form-check-input"
           type="checkbox"
           onChange={() => onSelectTransfers('all')}
-          defaultChecked={true}
-          name="all"
+          checked={transfers['all']}
+          value="all"
         />
         <label className="form-check-label" htmlFor="chk_all">Все</label>
       </div>
@@ -34,8 +33,8 @@ export default function TransferSelector({ transfers, onSelectTransfers }: IProp
           className="form-check-input"
           type="checkbox"
           onChange={() => onSelectTransfers('0')}
-          defaultChecked={false}
-          name="0"
+          checked={transfers['0']}
+          value="0"
         />
         <label className="form-check-label" htmlFor="chk_0">Без пересадок</label>
       </div>
@@ -44,8 +43,10 @@ export default function TransferSelector({ transfers, onSelectTransfers }: IProp
         <input className="form-check-input"
           type="checkbox"
           id="chk_1"
-          name="1"
+          value="1"
           onChange={() => onSelectTransfers('1')}
+          checked={transfers['1']}
+
         />
         <label className="form-check-label" htmlFor="chk_1">1 пересадка</label>
       </div>
@@ -54,8 +55,9 @@ export default function TransferSelector({ transfers, onSelectTransfers }: IProp
         <input className="form-check-input"
           type="checkbox"
           id="chk_2"
-          name="2"
+          value="2"
           onChange={() => onSelectTransfers('2')}
+          checked={transfers['2']}
         />
         <label className="form-check-label" htmlFor="chk_2">2 пересадки</label>
       </div>
@@ -64,8 +66,9 @@ export default function TransferSelector({ transfers, onSelectTransfers }: IProp
         <input className="form-check-input"
           type="checkbox"
           id="chk_3"
-          name="3"
+          value="3"
           onChange={() => onSelectTransfers('3')}
+          checked={transfers['3']}
         />
         <label className="form-check-label" htmlFor="chk_3">3 пересадки</label>
       </div>
@@ -73,3 +76,5 @@ export default function TransferSelector({ transfers, onSelectTransfers }: IProp
 
   )
 }
+
+export default React.memo(TransferSelector);
