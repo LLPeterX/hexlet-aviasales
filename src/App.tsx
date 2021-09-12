@@ -5,6 +5,7 @@ import './App.css'
 //import './components/header.css'
 import TransferSelector from './components/TransferSelector';
 import ITransferFilter from './types/transferFilter';
+import Ticket from './components/Ticket';
 
 
 const initialTransfersState: ITransferFilter = {
@@ -83,7 +84,10 @@ function App() {
 
           />
 
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ratione sunt dicta aliquam minus expedita quos, aliquid tempora debitis. Minus voluptatem vel aspernatur perferendis fugiat eligendi doloribus inventore et consectetur!
+          <div>
+            <Ticket />
+            <Ticket />
+          </div>
         </div>
       </div>
     </div>

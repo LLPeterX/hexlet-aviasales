@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './transferSelector.css'
 import ITransferFilter from '../types/transferFilter'
 
