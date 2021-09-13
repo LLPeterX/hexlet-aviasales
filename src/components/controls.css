@@ -1,7 +1,12 @@
 .buttons {
   margin-bottom: 20px;
-  padding-right: 100px;
   font-size: 10pt;
+  border: 1px solid #E8ECEF;
+  border-radius: 10px;
+  /* border: 1px solid red; */
+  width: 500px;
+  background-color: white;
+  margin-right: 100px;
 }
 
 .button_text {

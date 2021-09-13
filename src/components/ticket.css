@@ -1,9 +1,10 @@
 .ticket {
   background-color: white;
   /* border: 1px solid blue; */
+  border: 1px solid #E8ECEF;
+  border-radius: 10px;
   margin: 20px;
   width: 500px;
-  background-color: white;
 }
 
 .airlines {
