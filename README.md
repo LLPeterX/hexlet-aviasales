@@ -17,6 +17,11 @@
 ### Макет (Figma)
 https://github.com/KosyanMedia/test-tasks/raw/f0f60244b045928746188a86ba4f76ddb5515111/aviasales_frontend/Aviasales%20Test%20Task.fig
 
+* сначала получаем searchId запросом GET на https://front-test.beta.aviasales.ru/search (возвращает объект типа {"searchId":"276oy"})
+* используем searchId в последующих запросах: https://front-test.beta.aviasales.ru/tickets?searchId=276oy
+Сервер возвращает ответ в виде {tickets: [], stop: false}
+Могут быть ошибки 500
+
 ----------------------------------------------
 TODO:
 TransferSelector - переработать чекбоксы. Заставить работать.

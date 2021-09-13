@@ -5,6 +5,7 @@ import './App.css'
 import TransferSelector from './components/TransferSelector';
 import ITransferFilter from './types/transferFilter';
 import Ticket from './components/Ticket';
+import useGetTickets from './hooks/useGetTickets';
 
 
 const initialTransfersState: ITransferFilter = {
@@ -21,6 +22,11 @@ function App() {
   const [routeFilter, setRouteFilter] = useState('price'); // 'price' or 'speed'
   //state for transfers/transshipment
   const [transfers, setTransfers] = useState(initialTransfersState);
+
+  // get data from server
+  const [searchId, allTickets] = useGetTickets();
+  console.log('App: id=', searchId, ', tickets:', allTickets);
+
 
   // ---------------------- handlers --------------------------------
 
