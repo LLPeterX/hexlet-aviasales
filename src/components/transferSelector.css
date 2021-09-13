@@ -1,12 +1,36 @@
-.chk-outline {
-  background-color: aqua;
-}
-
 .form-header {
-  margin: 8px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 10pt;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .form-transfer {
   background-color: white;
   border-color: #E5E9EC;
+  margin-top: 0;
+  margin-left: 40px;
+  /* border: 1px solid burlywood;  */
+}
+
+.form-check {
+  align-items: center;
+  margin: 0;
+  padding-left: 40px;
+  background-color: white;
+}
+.form-check-active {
+  background-color: #F1FCFF;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+}
+
+.form-check-label {
+  padding: 10px;
 }

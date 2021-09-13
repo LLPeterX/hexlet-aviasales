@@ -1,13 +1,10 @@
 .buttons {
-  /* border: 1px solid red; */
   margin-bottom: 20px;
+  padding-right: 100px;
+  font-size: 10pt;
 }
 
-.btn {
-  /* border: 1px solid green; */
-  width: 100%;
-}
-
-.transf {
-  border: 1px solid;
+.button_text {
+  font-size: 10pt;
+  font-weight: 500;
 }

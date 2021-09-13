@@ -19,13 +19,15 @@ export default function Controls({ active, setActive }: IControlProps) {
           <button type="button"
             className={`btn ${active === 'price' ? 'btn-primary' : 'outline'}`}
             onClick={() => setActive('price')}
-          >САМЫЙ ДЕШЕВЫЙ
+          >
+            <span className="button_text">САМЫЙ ДЕШЕВЫЙ</span>
           </button>
 
           <button type="button"
             className={`btn ${active === 'speed' ? 'btn-primary' : 'outline'}`}
             onClick={() => setActive('speed')}
-          >САМЫЙ БЫСТРЫЙ
+          >
+            <span className="button_text">САМЫЙ БЫСТРЫЙ</span>
           </button>
 
         </div>

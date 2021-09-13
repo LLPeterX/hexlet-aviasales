@@ -1,8 +1,9 @@
 .ticket {
   background-color: white;
-  border: 1px solid blue;
-  border-radius: 4px;
-  margin: 10px;
+  /* border: 1px solid blue; */
+  margin: 20px;
+  width: 500px;
+  background-color: white;
 }
 
 .airlines {
@@ -21,4 +22,10 @@
   font-size: 20px;
   color: #2280FF;
   font-weight: bold;
+  padding-top: 10px;
+}
+
+.ticket_container {
+  width: 100%;
+  margin: 0;
 }

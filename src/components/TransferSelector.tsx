@@ -27,7 +27,7 @@ function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element
         <label className="form-check-label" htmlFor="chk_all">Все</label>
       </div>
 
-      <div className="form-check">
+      <div className="form-check form-check-active">
         <input
           id="chk_0"
           className="form-check-input"

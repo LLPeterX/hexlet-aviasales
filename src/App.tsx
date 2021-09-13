@@ -63,7 +63,7 @@ function App() {
 
 
   return (
-    <div className="container-sm bg">
+    <div className="container main">
       <div className="row">
         <div className="col header">
           <img src={logo} alt="logotype" />

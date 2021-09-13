@@ -1,14 +1,19 @@
-body {
+.main {
   background-color: #F3F7FA;
+  width: 960px;
+  justify-content: center;
+  /* border: 1px solid red; */
 }
 
 .header {
   /* border: 1px solid blue; */
   display: flex;
   justify-content: center;
-  padding: 30px;
+  height: 160px;
+  width: 100%;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
-.bg {
-  background-color: #F3F7FA;
-}
+

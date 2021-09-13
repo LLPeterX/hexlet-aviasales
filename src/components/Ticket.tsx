@@ -19,16 +19,10 @@ export default function Ticket(): JSX.Element {
       </div>
 
       {/* cycle */}
-      <div className="row">
-        <div className="col">
-          <TicketItem title="MOV-HKT" content="10:45 - 09:00" />
-        </div>
-        <div className="col">
-          <TicketItem title="в пути" content="21ч 45м" />
-        </div>
-        <div className="col">
-          <TicketItem title="2 пересадки" content="HKG, JNB" />
-        </div>
+      <div className="ticket_container">
+        <TicketItem destination={"MOW-HKT"} range={"10:45 - 08:00"} time={"21ч 15м"} transfersCount={2} transfersList={"HKG, JNB"} />
+        <TicketItem destination={"MOW-HKT"} range={"11:20 - 00:50"} time={"13ч 30м"} transfersCount={1} transfersList={"HKG"} />
+        <TicketItem destination={"MOW-HKT"} range={"12:00 - 13:00"} time={"1ч"} transfersCount={0} />
       </div>
 
 

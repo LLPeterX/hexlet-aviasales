@@ -1,6 +1,11 @@
-.item {
+.row {
+  margin-bottom: 10px;
+}
+
+.col_item {
   display: flex;
   flex-direction: column;
+  /* border: 1px solid green; */
 }
 
 .title {
@@ -11,7 +16,6 @@
 
 .content {
   color: black;
-  text-transform: uppercase;
   font-size: 12pt;
-  font-weight: bold;
+  font-weight: 600;
 }
