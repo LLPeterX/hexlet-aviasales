@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Controls from './components/Controls';
 import logo from './assets/logo.png'
 import './App.css'
-//import './components/header.css'
 import TransferSelector from './components/TransferSelector';
 import ITransferFilter from './types/transferFilter';
 import Ticket from './components/Ticket';
@@ -23,16 +22,18 @@ function App() {
   //state for transfers/transshipment
   const [transfers, setTransfers] = useState(initialTransfersState);
 
-  // handlers
+  // ---------------------- handlers --------------------------------
 
-  // handler to switch price/speed
-  const handleSwitchFilter = (filter: string) => {
+  // выбор сортировки: 'price' - по цене, 'speed' - по времени
+  const handleSortBy = (filter: string) => {
     console.log('set filter to', filter);
 
     setRouteFilter(filter);
   }
 
-  const handleSelectTransfers = (count: string) => {
+  // Обработка переключения количества пересадок
+  // count: 'all' - Все пересадки, или строки '0' (без пересадок), '1', '2', '3'
+  const handleFilterBy = (count: string) => {
     const newTrans: ITransferFilter = { ...transfers };
     switch (count) {
       case 'all':
@@ -53,9 +54,15 @@ function App() {
         newTrans[count] = !transfers[count];
         break;
       default:
-        console.log('nothiunf');
-
+        console.log('nothing changed');
         return;
+    }
+    // проверить: если ничего не включено, то включить '0'
+    // if(!newTrans['all'] && !newTrans['0'] && !newTrans['1'] && !newTrans['2'] && !newTrans['3']) {
+    //   newTrans['0'] = true;
+    // }
+    if (!Object.values(newTrans).some(v => v)) {
+      newTrans['0'] = true;
     }
     setTransfers(newTrans);
   }
@@ -73,14 +80,14 @@ function App() {
         <div className="col-4">
           <TransferSelector
             transfers={transfers}
-            onSelectTransfers={handleSelectTransfers}
+            onSelectTransfers={handleFilterBy}
 
           />
         </div>
         <div className="col-8">
           <Controls
             active={routeFilter}
-            setActive={handleSwitchFilter}
+            setActive={handleSortBy}
 
           />
 

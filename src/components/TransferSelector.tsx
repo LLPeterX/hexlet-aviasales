@@ -15,7 +15,7 @@ function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element
   return (
     <div className="form-transfer">
       <div className="form-header">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
-      <div className="form-check">
+      <div className={`form-check${transfers['all'] ? ' form-check-active' : ''}`}>
         <input
           id="chk_all"
           className="form-check-input"
@@ -27,7 +27,7 @@ function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element
         <label className="form-check-label" htmlFor="chk_all">Все</label>
       </div>
 
-      <div className="form-check form-check-active">
+      <div className={`form-check${transfers['0'] ? ' form-check-active' : ''}`}>
         <input
           id="chk_0"
           className="form-check-input"
@@ -39,7 +39,7 @@ function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element
         <label className="form-check-label" htmlFor="chk_0">Без пересадок</label>
       </div>
 
-      <div className="form-check">
+      <div className={`form-check${transfers['1'] ? ' form-check-active' : ''}`}>
         <input className="form-check-input"
           type="checkbox"
           id="chk_1"
@@ -51,7 +51,7 @@ function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element
         <label className="form-check-label" htmlFor="chk_1">1 пересадка</label>
       </div>
 
-      <div className="form-check">
+      <div className={`form-check${transfers['2'] ? ' form-check-active' : ''}`}>
         <input className="form-check-input"
           type="checkbox"
           id="chk_2"
@@ -62,7 +62,7 @@ function TransferSelector({ transfers, onSelectTransfers }: IProps): JSX.Element
         <label className="form-check-label" htmlFor="chk_2">2 пересадки</label>
       </div>
 
-      <div className="form-check">
+      <div className={`form-check${transfers['3'] ? ' form-check-active' : ''}`}>
         <input className="form-check-input"
           type="checkbox"
           id="chk_3"
