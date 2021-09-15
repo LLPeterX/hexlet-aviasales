@@ -28,7 +28,7 @@ export default function useGetTickets(): IReturnType {
 
     // get main data from server
     // TODO: сделать цикл do ... while(!stop) с добавлением данных в массив allTickets[]
-    debugger;
+    //debugger;
     do {
       const resp2 = await fetch(`http://localhost:3000/tickets1.json?searchId=${searchId}`);
       if (!resp2.ok) {
@@ -43,10 +43,6 @@ export default function useGetTickets(): IReturnType {
     // finally
     setAllTickets(tickets);
     setIsLoading(false);
-    // group by
-    const grouped = _.groupBy(tickets, (item) => item.carrier);
-    console.log('gr = ', grouped);
-
   } // fetchTickets
 
 
