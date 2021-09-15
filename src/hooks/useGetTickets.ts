@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ITicket } from '../types/ITicket'
-import _ from 'lodash';
+//import _ from 'lodash';
 
 /* 
 Хук получения данных с сервера
@@ -50,7 +50,7 @@ export default function useGetTickets(): IReturnType {
     if (!allTickets.length) {
       fetchTickets();
     }
-  }, [])
+  }, []);
 
 
   return [allTickets, isLoading];
