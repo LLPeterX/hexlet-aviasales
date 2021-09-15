@@ -50,6 +50,7 @@ export default function useGetTickets(): IReturnType {
     if (!allTickets.length) {
       fetchTickets();
     }
+    // eslint-disable-next-line
   }, []);
 
 
