@@ -24,8 +24,8 @@ function App() {
   const [transfers, setTransfers] = useState(initialTransfersState);
 
   // get data from server
-  const [searchId, allTickets] = useGetTickets();
-  console.log('App: id=', searchId, ', tickets:', allTickets);
+  const [allTickets, isLoading] = useGetTickets();
+  console.log('App: loading:', isLoading, ', ticket:', allTickets);
 
 
   // ---------------------- handlers --------------------------------
