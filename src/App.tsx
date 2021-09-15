@@ -5,6 +5,7 @@ import './App.css'
 import TransferSelector from './components/TransferSelector';
 import ITransferFilter from './types/transferFilter';
 import Ticket from './components/Ticket';
+import Loader from './components/Loader'
 import useGetTickets from './hooks/useGetTickets';
 
 
@@ -73,7 +74,9 @@ function App() {
     setTransfers(newTrans);
   }
 
-
+  if (isLoading || allTickets.length === 0) {
+    return <Loader />
+  }
 
   return (
     <div className="container main">
