@@ -9,7 +9,7 @@ import useGetTickets from './hooks/useGetTickets';
 import AllTickets from './components/AllTickets';
 
 
-const initialTransfersState: ITransferFilter = {
+const initialStops: ITransferFilter = {
   "all": false,
   "0": true,
   "1": false,
@@ -22,7 +22,7 @@ function App() {
   // state for switch price/speed
   const [routeFilter, setRouteFilter] = useState('price'); // 'price' or 'speed'
   //state for transfers/transshipment
-  const [transfers, setTransfers] = useState(initialTransfersState);
+  const [transfers, setTransfers] = useState(initialStops);
 
   // get data from server
   const [groupedTickets, isLoading] = useGetTickets();
