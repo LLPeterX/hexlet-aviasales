@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ITicket } from '../types/ITicket'
-//import _ from 'lodash';
+import _ from 'lodash';
 
 /* 
 Хук получения данных с сервера
@@ -27,8 +27,6 @@ export default function useGetTickets(): IReturnType {
 
 
     // get main data from server
-    // TODO: сделать цикл do ... while(!stop) с добавлением данных в массив allTickets[]
-    //debugger;
     do {
       const resp2 = await fetch(`http://localhost:3000/tickets1.json?searchId=${searchId}`);
       if (!resp2.ok) {
@@ -41,6 +39,11 @@ export default function useGetTickets(): IReturnType {
     } while (!stop);
 
     // finally
+
+    // сгруппировать данные по перевозчику (carrier):
+    const groupedByCarrier = _.groupBy(tickets, (item) => item.carrier);
+    console.log(groupedByCarrier);
+
     setAllTickets(tickets);
     setIsLoading(false);
   } // fetchTickets

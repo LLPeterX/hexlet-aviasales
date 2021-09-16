@@ -27,7 +27,4 @@ https://github.com/KosyanMedia/test-tasks/raw/f0f60244b045928746188a86ba4f76ddb5
 
 ----------------------------------------------
 TODO:
-* Loader
-* long polling (см. https://javascript.info/long-polling)
-* отображение tickets[]
-
+* группировка по перевозчику, в кажждом не более 5 билетов

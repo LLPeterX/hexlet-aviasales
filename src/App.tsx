@@ -4,9 +4,9 @@ import logo from './assets/logo.png'
 import './App.css'
 import TransferSelector from './components/TransferSelector';
 import ITransferFilter from './types/transferFilter';
-import Ticket from './components/Ticket';
 import Loader from './components/Loader'
 import useGetTickets from './hooks/useGetTickets';
+import AllTickets from './components/AllTickets';
 
 
 const initialTransfersState: ITransferFilter = {
@@ -26,7 +26,7 @@ function App() {
 
   // get data from server
   const [allTickets, isLoading] = useGetTickets();
-  console.log('App: loading:', isLoading, ', ticket:', allTickets);
+  //console.log('App: loading:', isLoading, ', ticket:', allTickets);
 
 
   // ---------------------- handlers --------------------------------
@@ -101,8 +101,9 @@ function App() {
           />
 
           <div>
-            <Ticket />
-            <Ticket />
+            {/* <AllTickets tickets={allTickets.slice(0, 10)} /> */}
+            {/* <Ticket />
+            <Ticket /> */}
           </div>
         </div>
       </div>
