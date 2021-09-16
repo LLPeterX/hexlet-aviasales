@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { ITicket } from '../types/ITicket'
 import _ from 'lodash';
+import { ICarrier } from "../types/ICarrier";
 
 /* 
 Хук получения данных с сервера
 */
 
 type IReturnType = [
-  allTickets: ITicket[],
+  allTickets: ICarrier | null,
   isLoading: boolean
 ];
 
 
 export default function useGetTickets(): IReturnType {
   const [allTickets, setAllTickets] = useState<ITicket[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [groupedTickets, setGroupedTickets] = useState<ICarrier | null>(null);
 
   async function fetchTickets() {
     // get searchId
@@ -41,10 +43,11 @@ export default function useGetTickets(): IReturnType {
     // finally
 
     // сгруппировать данные по перевозчику (carrier):
-    const groupedByCarrier = _.groupBy(tickets, (item) => item.carrier);
-    console.log(groupedByCarrier);
+    const groupedByCarrier: ICarrier = _.groupBy(tickets, (item) => item.carrier);
+    //console.log(groupedByCarrier);
 
     setAllTickets(tickets);
+    setGroupedTickets(groupedByCarrier);
     setIsLoading(false);
   } // fetchTickets
 
@@ -57,6 +60,6 @@ export default function useGetTickets(): IReturnType {
   }, []);
 
 
-  return [allTickets, isLoading];
+  return [groupedTickets, isLoading];
 
 }

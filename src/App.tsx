@@ -25,7 +25,7 @@ function App() {
   const [transfers, setTransfers] = useState(initialTransfersState);
 
   // get data from server
-  const [allTickets, isLoading] = useGetTickets();
+  const [groupedTickets, isLoading] = useGetTickets();
   //console.log('App: loading:', isLoading, ', ticket:', allTickets);
 
 
@@ -61,20 +61,15 @@ function App() {
         newTrans[count] = !transfers[count];
         break;
       default:
-        console.log('nothing changed');
         return;
     }
-    // проверить: если ничего не включено, то включить '0'
-    // if(!newTrans['all'] && !newTrans['0'] && !newTrans['1'] && !newTrans['2'] && !newTrans['3']) {
-    //   newTrans['0'] = true;
-    // }
     if (!Object.values(newTrans).some(v => v)) {
       newTrans['0'] = true;
     }
     setTransfers(newTrans);
   }
 
-  if (isLoading || allTickets.length === 0) {
+  if (isLoading) {
     return <Loader />
   }
 
@@ -101,7 +96,7 @@ function App() {
           />
 
           <div>
-            {/* <AllTickets tickets={allTickets.slice(0, 10)} /> */}
+            <AllTickets tickets={groupedTickets} />
             {/* <Ticket />
             <Ticket /> */}
           </div>

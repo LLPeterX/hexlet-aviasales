@@ -1,16 +1,19 @@
 import React from 'react'
 import Ticket from './Ticket'
-import { ITicket } from '../types/ITicket'
+import { ICarrier } from '../types/ICarrier'
 
-interface IProps {
-  tickets: ITicket[]
+interface PropsType {
+  tickets: ICarrier | null
 }
 
-export default function AllTickets({ tickets }: IProps) {
+export default function AllTickets({ tickets }: PropsType) {
+  if (!tickets) {
+    return null;
+  }
   return (
     <div>
       {
-        tickets.map((ticketItem, i) => <Ticket key={i} ticket={ticketItem} />)
+        Object.keys(tickets).map(carrier => <Ticket key={carrier} ticket={tickets[carrier]} />)
       }
     </div>
   )

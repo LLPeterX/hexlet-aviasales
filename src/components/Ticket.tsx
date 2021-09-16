@@ -5,7 +5,7 @@ import TicketItem from './TicketItem';
 import { ITicket } from '../types/ITicket'
 
 interface IProps {
-  ticket: ITicket
+  ticket: ITicket[]
 }
 
 export default function Ticket({ ticket }: IProps): JSX.Element {
@@ -14,11 +14,11 @@ export default function Ticket({ ticket }: IProps): JSX.Element {
       <div className="row">
         <div className="col">
           <div className="price">
-            {ticket.price.toLocaleString()} Р
+            1000 Р
           </div>
         </div>
         <div className="col airlines">
-          {ticket.carrier} Airlines
+          XXX Airlines
         </div>
       </div>
 
