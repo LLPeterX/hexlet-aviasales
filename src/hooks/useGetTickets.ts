@@ -11,7 +11,7 @@ type IReturnType = [
   isLoading: boolean
 ];
 
-const DEBUG = true; // true: use localhost sample json files, false: use real server data
+const DEBUG = false; // true: use localhost sample json files, false: use real server data
 
 export default function useGetTickets(): IReturnType {
   const [allTickets, setAllTickets] = useState<ITicket[]>([]);
