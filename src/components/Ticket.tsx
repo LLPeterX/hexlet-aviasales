@@ -73,11 +73,6 @@ export default function Ticket({ ticket }: PropsType): JSX.Element {
           duration={minutes2hhmm(ticket.segments[1].duration)}
           stopsList={ticket.segments[1].stops} />
       </div>
-
-
-
-
-
     </div >
   )
 }

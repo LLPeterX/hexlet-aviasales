@@ -7,9 +7,6 @@ import ITransferFilter from './types/transferFilter';
 import Loader from './components/Loader'
 import useGetTickets from './hooks/useGetTickets';
 import AllTickets from './components/AllTickets';
-//import { ITicket } from './types/ITicket';
-//import { sortBy } from 'lodash';
-
 
 const initialStops: ITransferFilter = {
   "all": false,
@@ -25,17 +22,14 @@ function App() {
   const [order, setOrder] = useState('price'); // 'price' or 'speed'
   //state for transfers/transshipment
   const [stops, setStops] = useState(initialStops);
-  //const [showTickets, setShowTickets] = useState<ITicket[]>([]);
 
   // get data from server
   const [allTickets, isLoading] = useGetTickets();
-
 
   // ---------------------- handlers --------------------------------
 
   // выбор сортировки: 'price' - по цене, 'speed' - по времени
   const handleSortBy = (filter: string) => {
-    console.log('set filter to', filter);
     setOrder(filter);
   }
 
@@ -70,6 +64,7 @@ function App() {
     setStops(newTrans);
   }
 
+  // show Loader while data is fetching from server
   if (isLoading) {
     return <Loader />
   }
@@ -93,9 +88,7 @@ function App() {
           <Controls
             active={order}
             setActive={handleSortBy}
-
           />
-
           <div>
             {allTickets.length && <AllTickets tickets={allTickets} order={order} filter={stops} />}
           </div>
