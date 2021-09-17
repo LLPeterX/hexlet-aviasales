@@ -25,7 +25,7 @@ function App() {
   const [transfers, setTransfers] = useState(initialStops);
 
   // get data from server
-  const [groupedTickets, isLoading] = useGetTickets();
+  const [allTickets, isLoading] = useGetTickets();
   //console.log('App: loading:', isLoading, ', ticket:', allTickets);
 
 
@@ -96,7 +96,7 @@ function App() {
           />
 
           <div>
-            <AllTickets tickets={groupedTickets} />
+            <AllTickets tickets={allTickets} />
             {/* <Ticket />
             <Ticket /> */}
           </div>

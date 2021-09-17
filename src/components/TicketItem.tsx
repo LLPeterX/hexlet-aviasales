@@ -5,13 +5,12 @@ interface IProps {
   destination: string,
   range: string,
   time: string,
-  transfersCount: number,
-  transfersList?: string | null
+  stopsList: string[]
 }
 
-export default function TicketItem({ destination, range, time, transfersCount, transfersList }: IProps): JSX.Element {
+export default function TicketItem({ destination, range, time, stopsList }: IProps): JSX.Element {
   let transfersString: string = "";
-  switch (transfersCount) {
+  switch (stopsList.length) {
     case 0:
       transfersString = "без пересадок";
       break;
@@ -19,7 +18,7 @@ export default function TicketItem({ destination, range, time, transfersCount, t
       transfersString = "1 пересадка";
       break;
     default:
-      transfersString = `${transfersCount} пересадки`;
+      transfersString = `${stopsList.length} пересадки`;
   }
 
   return (
@@ -39,7 +38,7 @@ export default function TicketItem({ destination, range, time, transfersCount, t
       <div className="col-4">
         <div className="col_item">
           <div className="title">{transfersString}</div>
-          {transfersCount > 0 && <div className="content">{transfersList}</div>}
+          {stopsList.length > 0 && <div className="content">{stopsList.join(',')}</div>}
         </div>
       </div>
     </div>

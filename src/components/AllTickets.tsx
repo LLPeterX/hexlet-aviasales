@@ -1,9 +1,10 @@
 import React from 'react'
 import Ticket from './Ticket'
-import { ICarrier } from '../types/ICarrier'
+//import { ICarrier } from '../types/ICarrier'
+import { ITicket } from '../types/ITicket'
 
-interface PropsType {
-  tickets: ICarrier | null
+type PropsType = {
+  tickets: ITicket[]
 }
 
 export default function AllTickets({ tickets }: PropsType) {
@@ -13,7 +14,8 @@ export default function AllTickets({ tickets }: PropsType) {
   return (
     <div>
       {
-        Object.keys(tickets).map(carrier => <Ticket key={carrier} ticket={tickets[carrier]} />)
+        //Object.keys(tickets).map(carrier => <Ticket key={carrier} ticket={tickets[carrier]} />)
+        tickets.map((t, i) => <Ticket key={i} ticket={t} />)
       }
     </div>
   )
