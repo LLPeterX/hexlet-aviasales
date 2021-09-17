@@ -3,12 +3,12 @@ import './ticketItem.css'
 
 interface IProps {
   destination: string,
-  range: string,
-  time: string,
+  times: string,
+  duration: string,
   stopsList: string[]
 }
 
-export default function TicketItem({ destination, range, time, stopsList }: IProps): JSX.Element {
+export default function TicketItem({ destination, times, duration, stopsList }: IProps): JSX.Element {
   let transfersString: string = "";
   switch (stopsList.length) {
     case 0:
@@ -26,13 +26,13 @@ export default function TicketItem({ destination, range, time, stopsList }: IPro
       <div className="col-4">
         <div className="col_item">
           <div className="title">{destination}</div>
-          <div className="content">{range}</div>
+          <div className="content">{times}</div>
         </div>
       </div>
       <div className="col-4">
         <div className="col_item">
           <div className="title">в пути</div>
-          <div className="content">{time}</div>
+          <div className="content">{duration}</div>
         </div>
       </div>
       <div className="col-4">

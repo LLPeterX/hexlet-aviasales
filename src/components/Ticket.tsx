@@ -48,7 +48,7 @@ export default function Ticket({ ticket }: PropsType): JSX.Element {
 
   return (
     <div className="container ticket">
-      <div className="row">
+      <div className="row ticket_header">
         <div className="col">
           <div className="price">
             {price} Р
@@ -64,16 +64,14 @@ export default function Ticket({ ticket }: PropsType): JSX.Element {
       <div className="ticket_container">
         <TicketItem
           destination={`${ticket.segments[0].origin} - ${ticket.segments[0].destination}`}
-          range={`${getTimeFromDate(ticket.segments[0].date)} - ${getEndTime(ticket.segments[0].date, ticket.segments[0].duration)}`}
-          time={minutes2hhmm(ticket.segments[0].duration)}
+          times={`${getTimeFromDate(ticket.segments[0].date)} - ${getEndTime(ticket.segments[0].date, ticket.segments[0].duration)}`}
+          duration={minutes2hhmm(ticket.segments[0].duration)}
           stopsList={ticket.segments[0].stops} />
         <TicketItem
           destination={`${ticket.segments[1].origin} - ${ticket.segments[1].destination}`}
-          range={`${getTimeFromDate(ticket.segments[1].date)} - ${getEndTime(ticket.segments[1].date, ticket.segments[1].duration)}`}
-          time={minutes2hhmm(ticket.segments[1].duration)}
+          times={`${getTimeFromDate(ticket.segments[1].date)} - ${getEndTime(ticket.segments[1].date, ticket.segments[1].duration)}`}
+          duration={minutes2hhmm(ticket.segments[1].duration)}
           stopsList={ticket.segments[1].stops} />
-
-        {/* <TicketItem destination={"MOW-HKT"} range={"12:00 - 13:00"} time={"1ч"} transfersCount={0} /> */}
       </div>
 
 

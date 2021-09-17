@@ -6,13 +6,18 @@
   margin: 20px;
   width: 500px;
 }
+.ticket_header {
+  align-items: baseline;
+}
 
 .airlines {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
   text-align: right;
   font-weight: bold;
-  padding: 10px;
+  
 }
 
 .img {
@@ -35,12 +40,12 @@
 
 .airlines_logo {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background-color: darkgreen;
   color: white;
   font-weight: bold;
   text-align: center;
-  padding-top: 2px;
+  padding-top: 4px;
   margin-right: 5px;
 }

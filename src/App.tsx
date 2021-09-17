@@ -7,7 +7,7 @@ import ITransferFilter from './types/transferFilter';
 import Loader from './components/Loader'
 import useGetTickets from './hooks/useGetTickets';
 import AllTickets from './components/AllTickets';
-import { ITicket } from './types/ITicket';
+//import { ITicket } from './types/ITicket';
 //import { sortBy } from 'lodash';
 
 
@@ -25,7 +25,7 @@ function App() {
   const [order, setOrder] = useState('price'); // 'price' or 'speed'
   //state for transfers/transshipment
   const [stops, setStops] = useState(initialStops);
-  const [showTickets, setShowTickets] = useState<ITicket[]>([]);
+  //const [showTickets, setShowTickets] = useState<ITicket[]>([]);
 
   // get data from server
   const [allTickets, isLoading] = useGetTickets();
@@ -70,24 +70,6 @@ function App() {
     setStops(newTrans);
   }
 
-  // redraw when change oreder
-  React.useEffect(() => {
-    if (order === 'price') {
-      // sort by price
-      console.log('--sort by price');
-      setShowTickets(() => allTickets.sort((a: ITicket, b: ITicket) => a.price - b.price))
-    } else {
-      // sort by duration (ticket.segment[0].duration)
-      console.log('--sort by duration');
-
-      setShowTickets(() => allTickets.sort((a: ITicket, b: ITicket) => a.segments[0].duration - b.segments[0].duration))
-    }
-    console.log('--sorted:', showTickets);
-
-
-  }, [order, allTickets, showTickets])
-
-
   if (isLoading) {
     return <Loader />
   }
@@ -115,7 +97,7 @@ function App() {
           />
 
           <div>
-            {showTickets.length && <AllTickets tickets={showTickets} />}
+            {allTickets.length && <AllTickets tickets={allTickets} order={order} />}
           </div>
         </div>
       </div>
