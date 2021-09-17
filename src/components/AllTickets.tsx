@@ -11,6 +11,7 @@ export default function AllTickets({ tickets }: PropsType) {
   if (!tickets) {
     return null;
   }
+  console.log('>>>all tickets:', tickets);
   return (
     <div>
       {

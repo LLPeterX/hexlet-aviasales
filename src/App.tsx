@@ -29,7 +29,6 @@ function App() {
 
   // get data from server
   const [allTickets, isLoading] = useGetTickets();
-  //console.log('App: loading:', isLoading, ', ticket:', allTickets);
 
 
   // ---------------------- handlers --------------------------------
@@ -37,7 +36,6 @@ function App() {
   // выбор сортировки: 'price' - по цене, 'speed' - по времени
   const handleSortBy = (filter: string) => {
     console.log('set filter to', filter);
-
     setOrder(filter);
   }
 
@@ -77,17 +75,17 @@ function App() {
     if (order === 'price') {
       // sort by price
       console.log('--sort by price');
-      setShowTickets(allTickets.sort((a: ITicket, b: ITicket) => a.price - b.price))
+      setShowTickets(() => allTickets.sort((a: ITicket, b: ITicket) => a.price - b.price))
     } else {
       // sort by duration (ticket.segment[0].duration)
       console.log('--sort by duration');
 
-      setShowTickets(allTickets.sort((a: ITicket, b: ITicket) => a.segments[0].duration - b.segments[0].duration))
+      setShowTickets(() => allTickets.sort((a: ITicket, b: ITicket) => a.segments[0].duration - b.segments[0].duration))
     }
     console.log('--sorted:', showTickets);
 
 
-  }, [order, allTickets])
+  }, [order, allTickets, showTickets])
 
 
   if (isLoading) {
