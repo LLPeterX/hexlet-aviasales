@@ -97,7 +97,7 @@ function App() {
           />
 
           <div>
-            {allTickets.length && <AllTickets tickets={allTickets} order={order} />}
+            {allTickets.length && <AllTickets tickets={allTickets} order={order} filter={stops} />}
           </div>
         </div>
       </div>
