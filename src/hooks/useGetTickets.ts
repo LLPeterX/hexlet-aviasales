@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ITicket } from '../types/ITicket'
-//import _ from 'lodash';
-//import { ICarrier } from "../types/ICarrier";
+//import ITransferFilter from '../types/transferFilter'
 
 /* 
 Хук получения данных с сервера
@@ -13,9 +12,11 @@ type IReturnType = [
 ];
 
 
+//export default function useGetTickets(order: string, filter: ITransferFilter): IReturnType {
 export default function useGetTickets(): IReturnType {
   const [allTickets, setAllTickets] = useState<ITicket[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  //const [sortedTickets, setSortedTickets] = useState<ITicket[]>([]);
 
   async function fetchTickets() {
     // get searchId
@@ -45,8 +46,8 @@ export default function useGetTickets(): IReturnType {
     //const groupedByCarrier: ICarrier = _.groupBy(tickets, (item) => item.carrier);
     //console.log(groupedByCarrier);
 
-    setAllTickets(tickets.slice(0, 10));
-    //setGroupedTickets(groupedByCarrier);
+    //setAllTickets(tickets);
+    setAllTickets(tickets.slice(0, 5));
     setIsLoading(false);
   } // fetchTickets
 
@@ -57,6 +58,16 @@ export default function useGetTickets(): IReturnType {
     }
     // eslint-disable-next-line
   }, []);
+
+  //console.log('sorting by ', order);
+  // if (order === 'price') {
+  //   // sort by price
+  //   setSortedTickets(state => state.sort((a: ITicket, b: ITicket) => a.price - b.price))
+  // } else {
+  //   // sort by duration (ticket.segment[0].duration)
+  //   setSortedTickets(state => state.sort((a: ITicket, b: ITicket) => a.segments[0].duration - b.segments[0].duration))
+  // }
+
 
 
   return [allTickets, isLoading];

@@ -7,6 +7,8 @@ import ITransferFilter from './types/transferFilter';
 import Loader from './components/Loader'
 import useGetTickets from './hooks/useGetTickets';
 import AllTickets from './components/AllTickets';
+import { ITicket } from './types/ITicket';
+//import { sortBy } from 'lodash';
 
 
 const initialStops: ITransferFilter = {
@@ -20,9 +22,10 @@ const initialStops: ITransferFilter = {
 
 function App() {
   // state for switch price/speed
-  const [routeFilter, setRouteFilter] = useState('price'); // 'price' or 'speed'
+  const [order, setOrder] = useState('price'); // 'price' or 'speed'
   //state for transfers/transshipment
-  const [transfers, setTransfers] = useState(initialStops);
+  const [stops, setStops] = useState(initialStops);
+  const [showTickets, setShowTickets] = useState<ITicket[]>([]);
 
   // get data from server
   const [allTickets, isLoading] = useGetTickets();
@@ -35,16 +38,16 @@ function App() {
   const handleSortBy = (filter: string) => {
     console.log('set filter to', filter);
 
-    setRouteFilter(filter);
+    setOrder(filter);
   }
 
   // Обработка переключения количества пересадок
   // count: 'all' - Все пересадки, или строки '0' (без пересадок), '1', '2', '3'
   const handleFilterBy = (count: string) => {
-    const newTrans: ITransferFilter = { ...transfers };
+    const newTrans: ITransferFilter = { ...stops };
     switch (count) {
       case 'all':
-        newTrans['all'] = !transfers['all'];
+        newTrans['all'] = !stops['all'];
         if (newTrans['all']) {
           // when on, turn on any other chekboxes
           newTrans['0'] = newTrans['1'] = newTrans['2'] = newTrans['3'] = true;
@@ -58,7 +61,7 @@ function App() {
       case '2':
       case '3':
         newTrans['all'] = false;
-        newTrans[count] = !transfers[count];
+        newTrans[count] = !stops[count];
         break;
       default:
         return;
@@ -66,8 +69,26 @@ function App() {
     if (!Object.values(newTrans).some(v => v)) {
       newTrans['0'] = true;
     }
-    setTransfers(newTrans);
+    setStops(newTrans);
   }
+
+  // redraw when change oreder
+  React.useEffect(() => {
+    if (order === 'price') {
+      // sort by price
+      console.log('--sort by price');
+      setShowTickets(allTickets.sort((a: ITicket, b: ITicket) => a.price - b.price))
+    } else {
+      // sort by duration (ticket.segment[0].duration)
+      console.log('--sort by duration');
+
+      setShowTickets(allTickets.sort((a: ITicket, b: ITicket) => a.segments[0].duration - b.segments[0].duration))
+    }
+    console.log('--sorted:', showTickets);
+
+
+  }, [order, allTickets])
+
 
   if (isLoading) {
     return <Loader />
@@ -83,22 +104,20 @@ function App() {
       <div className="row">
         <div className="col-4">
           <TransferSelector
-            transfers={transfers}
+            transfers={stops}
             onSelectTransfers={handleFilterBy}
 
           />
         </div>
         <div className="col-8">
           <Controls
-            active={routeFilter}
+            active={order}
             setActive={handleSortBy}
 
           />
 
           <div>
-            <AllTickets tickets={allTickets} />
-            {/* <Ticket />
-            <Ticket /> */}
+            {showTickets.length && <AllTickets tickets={showTickets} />}
           </div>
         </div>
       </div>
