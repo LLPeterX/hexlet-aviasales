@@ -15,6 +15,7 @@ function minutes2hhmm(minutes: number): string {
   return `${hh.toString().padStart(2, '0')}ч ${mm.toString().padStart(2, '0')}м`;
 }
 
+// get time "HH:MM" from date or date string
 function getTimeFromDate(date: Date | string): string {
   let d: Date;
   if (typeof date === 'string') {
@@ -42,6 +43,9 @@ function getEndTime(startDate: Date | string, minutes: number): string {
 
 }
 
+/* 
+  Космпонент отображения одного билета
+*/
 export default function Ticket({ ticket }: PropsType): JSX.Element {
 
   const price = ticket.price.toLocaleString();

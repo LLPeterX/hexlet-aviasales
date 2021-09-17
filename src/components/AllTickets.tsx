@@ -1,4 +1,3 @@
-//import React, { useState } from 'react'
 import Ticket from './Ticket'
 import { ITicket } from '../types/ITicket'
 import ITransferFilter from '../types/transferFilter';
@@ -9,6 +8,9 @@ type PropsType = {
   filter: ITransferFilter
 }
 
+/* 
+ Компонент отображения всех билетов всех перевозчиков
+ */
 export default function AllTickets({ tickets, order, filter }: PropsType) {
 
   if (!tickets) {
@@ -30,10 +32,10 @@ export default function AllTickets({ tickets, order, filter }: PropsType) {
 
   // сортировка
   if (order === 'price') {
-    // sort by price
+    // by price
     showTickets.sort((a: ITicket, b: ITicket) => a.price - b.price);
   } else {
-    // sort by duration (ticket.segment[0].duration)
+    // by duration (ticket.segment[0].duration)
     showTickets.sort((a: ITicket, b: ITicket) => a.segments[0].duration - b.segments[0].duration)
   }
 
@@ -41,10 +43,6 @@ export default function AllTickets({ tickets, order, filter }: PropsType) {
     <div>
       {
         showTickets.slice(0, 5).map((t, i) => <Ticket key={`${t.carrier}.${t.price}.${t.segments[0].duration}`} ticket={t} />)
-        // tickets.map((t, i) => <div key={i}>
-        //   <p>Carrier: {t.carrier}, Price: {t.price}, Duration: {t.segments[0].duration}</p>
-        // </div>
-        // )
       }
     </div>
   )

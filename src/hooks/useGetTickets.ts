@@ -41,7 +41,7 @@ export default function useGetTickets(): IReturnType {
       const resp1 = await fetch('https://front-test.beta.aviasales.ru/search');
       const { searchId } = await resp1.json();
       // get main data from real remote server
-      let n = 0;
+      //let n = 0;
       do {
         const resp2 = await fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
         if (!resp2.ok) {
@@ -51,7 +51,7 @@ export default function useGetTickets(): IReturnType {
         let chunk: ITicket[] = data.tickets;
         stop = data.stop;
         tickets = tickets.concat(chunk);
-        console.log('got chunk #', n++);
+        //console.log('got chunk #', n++);
 
       } while (!stop);
     }
